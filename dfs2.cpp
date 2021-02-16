@@ -33,17 +33,6 @@ void dfs(int s){
 		}
 	}
 }
-void printPath(int source, int destination){
-	if(destination == source){
-		cout<< source << " ";
-	}
-	else if(previ[destination]==-1){
-		cout<< "No task is there" << endl;
-	}
-	else{
-		printPath(source,previ[destination]);
-	}
-}
 int main()
 {
 	cin>>v>>e;
@@ -62,7 +51,6 @@ int main()
 	int s;
 	cin>>s;
 	dfs(s);
-
 	cout<<endl;
 	return 0;
 }
