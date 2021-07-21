@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int factorial(int base, int n){
+int power(int base, int n){
 
 	if(n == 1){
 
@@ -9,7 +9,7 @@ int factorial(int base, int n){
 
 	}
 
-	return base * factorial(base, n-1);
+	return base * power(base, n-1);
 
 }
 
@@ -20,7 +20,7 @@ int main()
 
 	cin>> base >> n;
 
-	int ans = factorial(base, n);
+	int ans = power(base, n);
 
 	cout<< ans << endl;
 
