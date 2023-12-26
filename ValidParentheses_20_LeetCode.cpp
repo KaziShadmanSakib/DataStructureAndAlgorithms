@@ -3,59 +3,35 @@
 using namespace std;
 
 bool isValid(string s) {
-    
-    int size = s.size();
-
-    stack<char> sk;
-
-    for(int i=0;i<size;i++){
-
+    stack <char> st;
+    for(int i=0;i<s.size();i++){
         if(s[i] == '(' || s[i] == '{' || s[i] == '['){
-
-            sk.push(s[i]);
+            st.push(s[i]);
+            continue;
         }
-
-        if(s[i] == ')'){
-            if(sk.empty()){
-                return false;
-            }
-            char temp = sk.top();
-            sk.pop();
-            if(temp != '('){
-                return false;
-            }
+        if(st.empty()){
+            return false;
         }
-
-        if(s[i] == '}'){
-            if(sk.empty()){
+        if(s[i] == ')' || s[i] == '}' || s[i] == ']'){
+            char brac = st.top();
+            st.pop();
+            if(s[i]== ')' && brac != '('){
                 return false;
             }
-            char temp = sk.top();
-            sk.pop();
-            if(temp != '{'){
+            if(s[i]== '}' && brac != '{'){
+                return false;
+            }
+            if(s[i]== ']' && brac != '['){
                 return false;
             }
         }
-
-        if(s[i] == ']'){
-            if(sk.empty()){
-                return false;
-            }
-            char temp = sk.top();
-            sk.pop();
-            if(temp!= '['){
-                return false;
-            }
-        }
-
     }
-
-    if(!sk.empty()){
+    if(!st.empty()){
         return false;
     }
-
-    return true;
-
+    else{
+        return true;
+    }
 }
 
 
